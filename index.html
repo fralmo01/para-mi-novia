@@ -1,14 +1,102 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Para Mi Amor ❤️</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>crear una pagina web</h1>
-    <h2>las dimenciones de la foto queson 1702 x 3786</h2>
-
+    <!-- Corazón animado de fondo -->
+    <div class="background-heart">
+        <svg viewBox="0 0 32 29.6">
+            <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+            c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+        </svg>
+    </div>
+    <!-- Contenedor principal con efecto cristal -->
+    <div class="glass-container">
+        <!-- Sección inicial: Contador -->
+        <div id="initial-section" class="section active">
+            <h1 class="main-title">Nuestro Tiempo Juntos</h1>
+            <div class="counter-container">
+                <div class="counter-item">
+                    <span class="counter-number" id="days">0</span>
+                    <span class="counter-label">Días</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" id="hours">0</span>
+                    <span class="counter-label">Horas</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" id="minutes">0</span>
+                    <span class="counter-label">Minutos</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" id="seconds">0</span>
+                    <span class="counter-label">Segundos</span>
+                </div>
+            </div>
+            <button class="main-button" id="unlock-btn">
+                ¿Sabes por qué me gustas?
+            </button>
+        </div>
+        <!-- Modal de contraseña -->
+        <div id="password-modal" class="modal">
+            <div class="modal-content glass-effect">
+                <h2>Contraseña Secreta</h2>
+                <p>Solo tú conoces la respuesta... ❤️</p>
+                <input type="password" id="password-input" placeholder="Ingresa la contraseña">
+                <div class="modal-buttons">
+                    <button id="submit-password" class="submit-btn">Desbloquear</button>
+                    <button id="cancel-password" class="cancel-btn">Cancelar</button>
+                </div>
+                <p id="error-message" class="error-message"></p>
+            </div>
+        </div>
+        <!-- Sección desbloqueada: Contenido -->
+        <div id="unlocked-section" class="section">
+            <div class="content-wrapper">
+                <!-- Foto -->
+                <div class="photo-container">
+                    <div class="photo-frame">
+                        <img id="main-photo" src="img/novia.jpg" alt="Nuestra Foto" />
+                        <div class="photo-overlay"></div>
+                    </div>
+                </div>
+                <!-- Textos (para que tú los escribas) -->
+                <div class="text-content">
+                    <h2 class="content-title">Por Qué Me Gustas</h2>
+                    <div class="text-block">
+                        <p class="main-text">
+                            <!-- AQUÍ ESCRIBE TU PRIMER TEXTO -->
+                            Escribe aquí tu primer mensaje romántico...
+                        </p>
+                    </div>
+                    <div class="text-block">
+                        <p class="main-text">
+                            <!-- AQUÍ ESCRIBE TU SEGUNDO TEXTO -->
+                            Escribe aquí tu segundo mensaje...
+                        </p>
+                    </div>
+                    <div class="text-block">
+                        <p class="main-text">
+                            <!-- AQUÍ ESCRIBE TU TERCER TEXTO -->
+                            Escribe aquí tu tercer mensaje...
+                        </p>
+                    </div>
+                </div>
+                <!-- Corazón formado por palabras -->
+                <div class="word-heart-container">
+                    <h2 class="content-title">Lo Que Significas Para Mí</h2>
+                    <div class="word-heart">
+                        <!-- Las palabras se generarán con JavaScript -->
+                    </div>
+                </div>
+                <button class="back-button" id="back-btn">Volver al Inicio</button>
+            </div>
+        </div>
+    </div>
     <script src="js/script.js"></script>
 </body>
 </html>
