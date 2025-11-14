@@ -1,102 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grilla con Fila Completa</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        /* 1. Estilos para el contenedor padre */
-        .contenedor-principal {
-            display: flex;
-            flex-wrap: wrap;
-            border: 2px solid #000;
-        }
-
-        /* 2. Estilo general para CADA apartado */
-        .apartado {
-            flex-basis: calc(100% / 2);
-            /* Base de 50% para todos */
-            flex-grow: 1;
-            flex-shrink: 1;
-            padding: 20px;
-            border: 1px solid #888;
-        }
-
-        /* 3. ¡REGLA NUEVA! Para el apartado de la imagen */
-        /* Esta regla anula la base de 50% y la pone al 100% */
-        .apartado-imagen {
-            flex-basis: 100%;
-            /* ¡CAMBIO AQUÍ! */
-            padding: 5px;
-            /* Menos padding para una imagen */
-        }
-
-        /* 4. ¡REGLA NUEVA! Para hacer responsivas las imágenes */
-        .apartado img {
-            width: 100%;
-            /* Ocupa todo el ancho de su caja */
-            height: auto;
-            /* Mantiene la proporción */
-            display: block;
-            /* Elimina espacios extra debajo de la imagen */
-
-            /* (Opcional) Si quieres que todas las imágenes 
-               tengan la misma altura y se recorten:
-            height: 250px;
-            object-fit: cover; 
-            */
-        }
-
-
-        /* (Opcional) Damos colores de fondo a cada apartado */
-        .apartado-1 {
-            background-color: #e0f7fa;
-        }
-
-        .apartado-2 {
-            background-color: #c8e6c9;
-        }
-
-        .apartado-3 {
-            background-color: #fff9c4;
-        }
-
-        .apartado-4 {
-            background-color: #ffcdd2;
-        }
-
-        .apartado-5 {
-            background-color: #d1c4e9;
-        }
-
-        .apartado-6 {
-            background-color: #ffe0b2;
-            padding: 5px;
-        }
-
-        .apartado-imagen {
-            background-color: #333;
-        }
-    </style>
+    <title>Para Mi Amor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
     <div class="contenedor-principal">
-
         <div class="apartado apartado-1">
             <p>
                 Honey, I want you to see this little something <br>
                 I made for you.
             </p>
         </div>
-
         <div class="apartado apartado-2">
             <p>
                 Te amo. En ti encontré todo lo que siempre soñé. <br>
@@ -105,30 +23,59 @@
                 y mi felicidad... mi felicidad, eres tú.
             </p>
         </div>
-
         <div class="apartado apartado-imagen">
             <img src="https://images.unsplash.com/photo-1513279922550-250c2129b13a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Imagen horizontal de ejemplo">
         </div>
-
         <div class="apartado apartado-3">
-            <p>calendario</p>
+            <div id="calendar" class="calendar"></div>
+            <div id="counter" class="counter"></div>
         </div>
-
         <div class="apartado apartado-4">
-            <p>reproductor de musica)</p>
+            <div class="music-player">
+                <div class="player-header">
+                    <h3>Nuestra Playlist</h3>
+                </div>
+                <div class="album-art-container">
+                    <img id="album-art" src="" alt="Album Art" class="album-art">
+                </div>
+                <div class="song-details">
+                    <h4 id="song-title">Título de la Canción</h4>
+                    <p id="song-artist">Artista</p>
+                </div>
+                <div class="progress-container" id="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <div class="time-display">
+                    <span id="current-time">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+                <div class="player-controls">
+                    <button id="prev-btn" class="control-btn">
+                        <i class="fas fa-backward"></i>
+                    </button>
+                    <button id="play-btn" class="control-btn play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button id="next-btn" class="control-btn">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+                <div class="song-list-container">
+                    <h4>Lista de Reproducción</h4>
+                    <ul id="song-list" class="song-list"></ul>
+                </div>
+                <audio id="audio-player"></audio>
+            </div>
         </div>
-
         <div class="apartado apartado-5">
             <h1>IMPORTANTE (No lo olvides :3)</h1>
-
             <p>
                 Amorcito, quiero que nunca, ni por un segundo, dudes de cuánto te quiero.
                 Pero no es solo un "te quiero" simple. Es un "te quiero" que ha redefinido mi mundo.
                 Llegaste a mi vida y le diste un propósito, un color y una calidez
                 que yo no sabía que me faltaba.
             </p>
-
             <p>
                 Estoy inmensamente orgulloso de ti.
                 Veo cada día cómo te esfuerzas, cómo enfrentas cada desafío
@@ -138,7 +85,6 @@
                 y del corazón tan increíble que tienes.
                 Eres mi inspiración.
             </p>
-
             <p>
                 Siento con cada fibra de mi ser que te mereces el mundo.
                 Te mereces cada estrella del cielo, cada amanecer hermoso y cada sueño cumplido.
@@ -147,7 +93,6 @@
                 plena, segura y valorada como la reina que eres.
                 Mi misión es dártelo todo.
             </p>
-
             <p>
                 Te mereces la felicidad más pura y genuina que exista.
                 No solo momentos felices, sino una vida de felicidad.
@@ -156,7 +101,6 @@
                 Y si puedo ser el arquitecto de esa felicidad,
                 lo seré con cada acción de mi vida.
             </p>
-
             <p>
                 Te quiero. Te quiero hoy, con una profundidad que sigue creciendo.
                 Y te querré siempre. Mi amor por ti no es una promesa,
@@ -164,13 +108,10 @@
                 Siempre te querré.
             </p>
         </div>
-
         <div class="apartado apartado-6">
             <img src="img/novia.jpg" alt="Foto de mi novia">
         </div>
-
     </div>
-
+    <script src="js/script.js"></script>
 </body>
-
 </html>
