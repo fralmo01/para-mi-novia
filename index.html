@@ -5,98 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Mi Amor ❤️</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- GSAP para animaciones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
-    <!-- Corazón animado de fondo -->
-    <div class="background-heart">
-        <svg viewBox="0 0 32 29.6">
-            <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-            c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-        </svg>
-    </div>
-    <!-- Contenedor principal con efecto cristal -->
-    <div class="glass-container">
-        <!-- Sección inicial: Contador -->
-        <div id="initial-section" class="section active">
-            <h1 class="main-title">Nuestro Tiempo Juntos</h1>
-            <div class="counter-container">
-                <div class="counter-item">
-                    <span class="counter-number" id="days">0</span>
-                    <span class="counter-label">Días</span>
-                </div>
-                <div class="counter-item">
-                    <span class="counter-number" id="hours">0</span>
-                    <span class="counter-label">Horas</span>
-                </div>
-                <div class="counter-item">
-                    <span class="counter-number" id="minutes">0</span>
-                    <span class="counter-label">Minutos</span>
-                </div>
-                <div class="counter-item">
-                    <span class="counter-number" id="seconds">0</span>
-                    <span class="counter-label">Segundos</span>
+    <!-- Partículas de fondo -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Contenedor principal -->
+    <div class="main-container" id="mainContent">
+
+        <!-- SECCIÓN 1: Título "Te Amo" + Poema -->
+        <section class="section-love">
+            <div class="love-header">
+                <h1 class="title-love">TE AMO</h1>
+                <div class="poem-box poem-right">
+                    <h3>Mi Corazón</h3>
+                    <p>
+                        Eres la luz que ilumina mis días,<br>
+                        la sonrisa que alegra mis mañanas,<br>
+                        el sueño más hermoso que tengo,<br>
+                        y la realidad más bella que vivo.<br>
+                        <br>
+                        En cada latido de mi corazón,<br>
+                        late tu nombre con amor infinito.
+                    </p>
                 </div>
             </div>
-            <button class="main-button" id="unlock-btn">
-                ¿Sabes por qué me gustas?
+
+            <!-- Foto 1 -->
+            <div class="photo-container">
+                <div class="photo-frame">
+                    <img src="img/foto1.jpg" alt="Nuestra primera foto" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect fill=%22%23ffe0e0%22 width=%22600%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23ff0040%22 font-size=%2224%22 font-family=%22Arial%22%3EFoto 1: img/foto1.jpg%3C/text%3E%3C/svg%3E'">
+                    <div class="photo-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: Calendario + Reproductor + Poema + Foto -->
+        <section class="section-memories">
+            <div class="memories-grid">
+                <!-- Calendario -->
+                <div class="calendar-container">
+                    <h2>Nuestra Historia</h2>
+                    <div class="calendar-display">
+                        <div class="calendar-icon">📅</div>
+                        <div class="calendar-date" id="relationshipDate">
+                            <!-- Configurar en script.js -->
+                            <p class="date-label">Juntos desde:</p>
+                            <p class="date-value" id="startDate">1 de Enero, 2024</p>
+                        </div>
+                        <div class="time-together">
+                            <div class="time-item">
+                                <span class="time-number" id="days">0</span>
+                                <span class="time-label">Días</span>
+                            </div>
+                            <div class="time-item">
+                                <span class="time-number" id="hours">0</span>
+                                <span class="time-label">Horas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reproductor de Música -->
+                <div class="music-player">
+                    <h2>Nuestra Música</h2>
+                    <div class="player-container">
+                        <div class="album-art" id="albumArt">
+                            <div class="vinyl-record"></div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-title" id="songTitle">Selecciona una canción</p>
+                            <p class="song-artist" id="songArtist">Música romántica</p>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <div class="time-display">
+                            <span id="currentTime">0:00</span>
+                            <span id="duration">0:00</span>
+                        </div>
+                        <div class="player-controls">
+                            <button class="control-btn" id="prevBtn">⏮</button>
+                            <button class="control-btn play-btn" id="playBtn">▶</button>
+                            <button class="control-btn" id="nextBtn">⏭</button>
+                        </div>
+                        <div class="volume-control">
+                            <span>🔊</span>
+                            <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                        </div>
+                        <!-- Playlist -->
+                        <div class="playlist">
+                            <h3>Playlist</h3>
+                            <div class="playlist-items" id="playlistItems">
+                                <!-- Se generará con JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <audio id="audioPlayer"></audio>
+                </div>
+            </div>
+
+            <!-- Poema + Foto debajo -->
+            <div class="bottom-section">
+                <div class="poem-box poem-left">
+                    <h3>Mis Razones</h3>
+                    <p>
+                        Cada momento a tu lado es un regalo,<br>
+                        cada risa tuya es música para mi alma,<br>
+                        cada mirada tuya enciende mi mundo,<br>
+                        cada palabra tuya calma mi corazón.<br>
+                        <br>
+                        No hay día que no agradezca tenerte,<br>
+                        no hay noche que no sueñe contigo,<br>
+                        eres mi todo, mi siempre, mi amor eterno.
+                    </p>
+                </div>
+
+                <div class="photo-container photo-small">
+                    <div class="photo-frame">
+                        <img src="img/foto2.jpg" alt="Nuestra segunda foto" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22500%22 height=%22400%22%3E%3Crect fill=%22%23ffe0e0%22 width=%22500%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23ff0040%22 font-size=%2222%22 font-family=%22Arial%22%3EFoto 2: img/foto2.jpg%3C/text%3E%3C/svg%3E'">
+                        <div class="photo-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTÓN DE SENTIMIENTOS -->
+        <div class="feelings-button-container">
+            <button class="feelings-btn" id="feelingsBtn">
+                <span class="btn-text">Mis Sentimientos...</span>
+                <span class="btn-icon">💕</span>
             </button>
         </div>
-        <!-- Modal de contraseña -->
-        <div id="password-modal" class="modal">
-            <div class="modal-content glass-effect">
-                <h2>Contraseña Secreta</h2>
-                <p>Solo tú conoces la respuesta... ❤️</p>
-                <input type="password" id="password-input" placeholder="Ingresa la contraseña">
-                <div class="modal-buttons">
-                    <button id="submit-password" class="submit-btn">Desbloquear</button>
-                    <button id="cancel-password" class="cancel-btn">Cancelar</button>
+
+    </div>
+
+    <!-- SECCIÓN OCULTA: Libreto de Historia -->
+    <div class="story-section" id="storySection">
+        <button class="close-story" id="closeStory">✕</button>
+        <div class="story-container">
+            <h1 class="story-title">Nuestra Historia de Amor</h1>
+            <div class="story-content">
+                <div class="story-entry">
+                    <h2>El Comienzo</h2>
+                    <textarea class="story-text" placeholder="Escribe aquí cómo comenzó nuestra historia...
+
+Ejemplo:
+El día que te conocí, supe que mi vida cambiaría para siempre. Tu sonrisa iluminó mi mundo desde el primer momento..."></textarea>
                 </div>
-                <p id="error-message" class="error-message"></p>
+
+                <div class="story-entry">
+                    <h2>Nuestros Momentos Especiales</h2>
+                    <textarea class="story-text" placeholder="Escribe sobre los momentos que más atesoramos...
+
+Ejemplo:
+- Nuestra primera cita bajo las estrellas
+- El día que me dijiste que me amabas
+- Nuestro primer viaje juntos..."></textarea>
+                </div>
+
+                <div class="story-entry">
+                    <h2>Lo Que Siento Por Ti</h2>
+                    <textarea class="story-text" placeholder="Expresa tus sentimientos más profundos...
+
+Ejemplo:
+Eres más que mi pareja, eres mi mejor amiga, mi confidente, mi todo. Cada día contigo es una bendición..."></textarea>
+                </div>
+
+                <div class="story-entry">
+                    <h2>Nuestro Futuro</h2>
+                    <textarea class="story-text" placeholder="Escribe sobre tus sueños y planes juntos...
+
+Ejemplo:
+Sueño con construir una vida contigo, llena de risas, aventuras y amor infinito. Quiero envejecer a tu lado..."></textarea>
+                </div>
             </div>
-        </div>
-        <!-- Sección desbloqueada: Contenido -->
-        <div id="unlocked-section" class="section">
-            <div class="content-wrapper">
-                <!-- Foto -->
-                <div class="photo-container">
-                    <div class="photo-frame">
-                        <img id="main-photo" src="" alt="Nuestra Foto" />
-                        <div class="photo-overlay"></div>
-                    </div>
-                </div>
-                <!-- Textos (para que tú los escribas) -->
-                <div class="text-content">
-                    <h2 class="content-title">Por Qué Me Gustas</h2>
-                    <div class="text-block">
-                        <p class="main-text">
-                            <!-- AQUÍ ESCRIBE TU PRIMER TEXTO -->
-                            Escribe aquí tu primer mensaje romántico...
-                        </p>
-                    </div>
-                    <div class="text-block">
-                        <p class="main-text">
-                            <!-- AQUÍ ESCRIBE TU SEGUNDO TEXTO -->
-                            Escribe aquí tu segundo mensaje...
-                        </p>
-                    </div>
-                    <div class="text-block">
-                        <p class="main-text">
-                            <!-- AQUÍ ESCRIBE TU TERCER TEXTO -->
-                            Escribe aquí tu tercer mensaje...
-                        </p>
-                    </div>
-                </div>
-                <!-- Corazón formado por palabras -->
-                <div class="word-heart-container">
-                    <h2 class="content-title">Lo Que Significas Para Mí</h2>
-                    <div class="word-heart">
-                        <!-- Las palabras se generarán con JavaScript -->
-                    </div>
-                </div>
-                <button class="back-button" id="back-btn">Volver al Inicio</button>
+
+            <div class="story-actions">
+                <button class="save-story-btn" id="saveStory">💾 Guardar Historia</button>
+                <button class="back-btn" id="backToMain">← Volver</button>
             </div>
         </div>
     </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>

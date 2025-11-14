@@ -1,320 +1,579 @@
 // ===== CONFIGURACIÓN =====
-// IMPORTANTE: Cambia estos valores según tus necesidades
-// Fecha de inicio del contador (formato: año, mes-1, día, hora, minuto, segundo)
-// Ejemplo: new Date(2024, 0, 15, 20, 30, 0) = 15 de enero de 2024, 8:30 PM
-const START_DATE = new Date(2024, 0, 1, 0, 0, 0);
-// Contraseña secreta (cámbiala por la que quieras)
-const SECRET_PASSWORD = "teamo";
-// Ruta de la foto (coloca tu foto en la carpeta del proyecto)
-const PHOTO_PATH = "tu-foto.jpg"; // Cambia esto por el nombre de tu foto
-// Palabras para el corazón (personalízalas)
-const HEART_WORDS = [
-    "Amor", "Felicidad", "Sonrisas", "Cariño", "Pasión",
-    "Ternura", "Alegría", "Dulzura", "Belleza", "Luz",
-    "Vida", "Sueños", "Magia", "Risas", "Paz",
-    "Inspiración", "Compañía", "Calidez", "Sinceridad", "Confianza",
-    "Aventura", "Momentos", "Recuerdos", "Eternidad", "Corazón",
-    "Juntos", "Siempre", "Forever", "Mi Todo", "Mi Mundo"
+// IMPORTANTE: Personaliza estos valores según tu relación
+
+// Fecha de inicio de la relación (Año, Mes-1, Día)
+// Ejemplo: new Date(2024, 0, 15) = 15 de Enero, 2024
+const RELATIONSHIP_START_DATE = new Date(2024, 0, 1);
+
+// Lista de canciones en la carpeta music/
+// Formato: { title: "Título", artist: "Artista", file: "nombre-archivo.mp3" }
+const PLAYLIST = [
+    { title: "Canción Romántica 1", artist: "Artista 1", file: "cancion1.mp3" },
+    { title: "Canción Romántica 2", artist: "Artista 2", file: "cancion2.mp3" },
+    { title: "Canción Romántica 3", artist: "Artista 3", file: "cancion3.mp3" }
 ];
+
 // ===== VARIABLES GLOBALES =====
-let counterInterval;
+let currentSongIndex = 0;
+let isPlaying = false;
+let timeUpdateInterval;
+
 // ===== ELEMENTOS DEL DOM =====
 const elements = {
-    initialSection: document.getElementById('initial-section'),
-    unlockedSection: document.getElementById('unlocked-section'),
-    passwordModal: document.getElementById('password-modal'),
-    passwordInput: document.getElementById('password-input'),
-    errorMessage: document.getElementById('error-message'),
-    mainPhoto: document.getElementById('main-photo'),
-    unlockBtn: document.getElementById('unlock-btn'),
-    submitPassword: document.getElementById('submit-password'),
-    cancelPassword: document.getElementById('cancel-password'),
-    backBtn: document.getElementById('back-btn'),
+    // Partículas
+    particles: document.getElementById('particles'),
+
+    // Main content
+    mainContent: document.getElementById('mainContent'),
+
+    // Calendario
+    startDate: document.getElementById('startDate'),
     days: document.getElementById('days'),
     hours: document.getElementById('hours'),
-    minutes: document.getElementById('minutes'),
-    seconds: document.getElementById('seconds')
+
+    // Reproductor
+    audioPlayer: document.getElementById('audioPlayer'),
+    playBtn: document.getElementById('playBtn'),
+    prevBtn: document.getElementById('prevBtn'),
+    nextBtn: document.getElementById('nextBtn'),
+    volumeSlider: document.getElementById('volumeSlider'),
+    progress: document.getElementById('progress'),
+    progressBar: document.querySelector('.progress-bar'),
+    currentTime: document.getElementById('currentTime'),
+    duration: document.getElementById('duration'),
+    songTitle: document.getElementById('songTitle'),
+    songArtist: document.getElementById('songArtist'),
+    playlistItems: document.getElementById('playlistItems'),
+    vinylRecord: document.querySelector('.vinyl-record'),
+
+    // Botones
+    feelingsBtn: document.getElementById('feelingsBtn'),
+    closeStory: document.getElementById('closeStory'),
+    backToMain: document.getElementById('backToMain'),
+    saveStory: document.getElementById('saveStory'),
+
+    // Sección de historia
+    storySection: document.getElementById('storySection'),
+    storyTexts: []
 };
+
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
-    initCounter();
+    initParticles();
+    initGSAPAnimations();
+    initCalendar();
+    initMusicPlayer();
+    initStorySection();
     initEventListeners();
-    createWordHeart();
-    setPhoto();
+    loadStoryFromStorage();
+
+    console.log('%c💕 Página romántica cargada con amor 💕', 'color: #ff0040; font-size: 20px; font-weight: bold;');
 });
-// ===== CONTADOR =====
-function initCounter() {
-    updateCounter();
-    counterInterval = setInterval(updateCounter, 1000);
-}
-function updateCounter() {
-    const now = new Date();
-    const difference = now - START_DATE;
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-    // Animación de números
-    animateNumber(elements.days, days);
-    animateNumber(elements.hours, hours);
-    animateNumber(elements.minutes, minutes);
-    animateNumber(elements.seconds, seconds);
-}
-function animateNumber(element, value) {
-    const currentValue = parseInt(element.textContent) || 0;
-    if (currentValue !== value) {
-        element.style.transform = 'scale(1.2)';
-        element.style.color = '#ff6b9d';
-        setTimeout(() => {
-            element.textContent = value;
-            element.style.transform = 'scale(1)';
-            element.style.color = '#ff0040';
-        }, 150);
-    }
-}
-// ===== EVENT LISTENERS =====
-function initEventListeners() {
-    // Botón para abrir modal de contraseña
-    elements.unlockBtn.addEventListener('click', () => {
-        openPasswordModal();
-    });
-    // Botón para enviar contraseña
-    elements.submitPassword.addEventListener('click', () => {
-        checkPassword();
-    });
-    // Enter en input de contraseña
-    elements.passwordInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            checkPassword();
-        }
-    });
-    // Botón cancelar modal
-    elements.cancelPassword.addEventListener('click', () => {
-        closePasswordModal();
-    });
-    // Click fuera del modal para cerrar
-    elements.passwordModal.addEventListener('click', (e) => {
-        if (e.target === elements.passwordModal) {
-            closePasswordModal();
-        }
-    });
-    // Botón volver
-    elements.backBtn.addEventListener('click', () => {
-        showInitialSection();
-    });
-}
-// ===== MODAL DE CONTRASEÑA =====
-function openPasswordModal() {
-    elements.passwordModal.classList.add('active');
-    elements.passwordInput.value = '';
-    elements.errorMessage.textContent = '';
-    setTimeout(() => elements.passwordInput.focus(), 100);
-}
-function closePasswordModal() {
-    elements.passwordModal.classList.remove('active');
-    elements.passwordInput.value = '';
-    elements.errorMessage.textContent = '';
-}
-function checkPassword() {
-    const inputValue = elements.passwordInput.value.trim();
-    if (inputValue === '') {
-        showError('Por favor ingresa una contraseña');
-        shakeModal();
-        return;
-    }
-    if (inputValue.toLowerCase() === SECRET_PASSWORD.toLowerCase()) {
-        // Contraseña correcta
-        closePasswordModal();
-        showUnlockedSection();
-        createHeartAnimation();
-    } else {
-        // Contraseña incorrecta
-        showError('Contraseña incorrecta. Intenta de nuevo ❤️');
-        shakeModal();
-        elements.passwordInput.value = '';
-    }
-}
-function showError(message) {
-    elements.errorMessage.textContent = message;
-    elements.errorMessage.style.animation = 'none';
-    setTimeout(() => {
-        elements.errorMessage.style.animation = 'fadeIn 0.3s ease-out';
-    }, 10);
-}
-function shakeModal() {
-    const modalContent = document.querySelector('.modal-content');
-    modalContent.style.animation = 'none';
-    setTimeout(() => {
-        modalContent.style.animation = 'shake 0.5s ease-in-out';
-    }, 10);
-    // Agregar animación de shake si no existe
-    if (!document.getElementById('shake-animation')) {
-        const style = document.createElement('style');
-        style.id = 'shake-animation';
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-                20%, 40%, 60%, 80% { transform: translateX(10px); }
-            }
-        `;
-        document.head.appendChild(style);
-    }
-}
-// ===== CAMBIO DE SECCIONES =====
-function showUnlockedSection() {
-    elements.initialSection.classList.remove('active');
-    setTimeout(() => {
-        elements.initialSection.style.display = 'none';
-        elements.unlockedSection.classList.add('active');
-        elements.unlockedSection.style.display = 'block';
-    }, 300);
-}
-function showInitialSection() {
-    elements.unlockedSection.classList.remove('active');
-    setTimeout(() => {
-        elements.unlockedSection.style.display = 'none';
-        elements.initialSection.classList.add('active');
-        elements.initialSection.style.display = 'block';
-    }, 300);
-}
-// ===== FOTO =====
-function setPhoto() {
-    elements.mainPhoto.src = PHOTO_PATH;
-    // Manejar error si la foto no existe
-    elements.mainPhoto.onerror = function() {
-        this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="500" height="500"%3E%3Crect fill="%23ffe0e0" width="500" height="500"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23ff0040" font-size="20" font-family="Arial"%3EColoca tu foto aquí%3C/text%3E%3C/svg%3E';
-    };
-}
-// ===== CORAZÓN DE PALABRAS =====
-function createWordHeart() {
-    const container = document.querySelector('.word-heart');
-    // Coordenadas para formar un corazón (forma paramétrica)
-    const heartPoints = generateHeartPoints(HEART_WORDS.length);
-    HEART_WORDS.forEach((word, index) => {
-        const wordElement = document.createElement('span');
-        wordElement.className = 'word';
-        wordElement.textContent = word;
-        // Tamaño aleatorio
-        const fontSize = Math.random() * 1.5 + 0.8; // Entre 0.8rem y 2.3rem
-        wordElement.style.fontSize = `${fontSize}rem`;
-        // Posicionar en forma de corazón
-        const point = heartPoints[index];
-        wordElement.style.left = `${point.x}%`;
-        wordElement.style.top = `${point.y}%`;
-        // Delay de animación aleatorio
-        const delay = Math.random() * 2;
-        wordElement.style.animationDelay = `${delay}s`;
-        // Añadir efecto hover con delay
-        wordElement.style.transitionDelay = `${Math.random() * 0.1}s`;
-        container.appendChild(wordElement);
-    });
-}
-function generateHeartPoints(numPoints) {
-    const points = [];
-    // Generar puntos en forma de corazón usando ecuación paramétrica
-    for (let i = 0; i < numPoints; i++) {
-        const t = (i / numPoints) * Math.PI * 2;
-        // Ecuación paramétrica del corazón
-        const x = 16 * Math.pow(Math.sin(t), 3);
-        const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-        // Normalizar y centrar (0-100%)
-        const normalizedX = (x / 20) * 40 + 50; // Escalar y centrar
-        const normalizedY = (y / 20) * 40 + 50; // Escalar y centrar
-        // Agregar algo de aleatoriedad para que no sea perfecto
-        const randomX = normalizedX + (Math.random() - 0.5) * 5;
-        const randomY = normalizedY + (Math.random() - 0.5) * 5;
-        points.push({
-            x: Math.max(5, Math.min(95, randomX)),
-            y: Math.max(5, Math.min(95, randomY))
+
+// ===== PARTÍCULAS CON GSAP =====
+function initParticles() {
+    const particlesContainer = elements.particles;
+    const particleCount = 30;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+
+        // Estilos de partícula
+        particle.style.position = 'absolute';
+        particle.style.width = Math.random() * 10 + 5 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.borderRadius = '50%';
+        particle.style.background = `radial-gradient(circle,
+            rgba(255, 0, 64, ${Math.random() * 0.5 + 0.3}),
+            rgba(255, 107, 157, ${Math.random() * 0.3 + 0.1}))`;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.pointerEvents = 'none';
+
+        particlesContainer.appendChild(particle);
+
+        // Animación con GSAP
+        gsap.to(particle, {
+            x: (Math.random() - 0.5) * 200,
+            y: (Math.random() - 0.5) * 200,
+            duration: Math.random() * 5 + 5,
+            repeat: -1,
+            yoyo: true,
+            ease: 'power1.inOut',
+            delay: Math.random() * 2
+        });
+
+        gsap.to(particle, {
+            opacity: Math.random() * 0.5 + 0.2,
+            duration: Math.random() * 3 + 2,
+            repeat: -1,
+            yoyo: true,
+            ease: 'power1.inOut'
         });
     }
-    return points;
 }
-function createHeartAnimation() {
-    // Crear corazones flotantes al desbloquear
-    const container = document.body;
-    for (let i = 0; i < 15; i++) {
-        setTimeout(() => {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.style.position = 'fixed';
-            heart.style.fontSize = `${Math.random() * 30 + 20}px`;
-            heart.style.left = `${Math.random() * 100}%`;
-            heart.style.bottom = '-50px';
-            heart.style.zIndex = '9999';
-            heart.style.opacity = '0.8';
-            heart.style.pointerEvents = 'none';
-            heart.style.animation = `floatUp ${Math.random() * 3 + 3}s ease-out`;
-            container.appendChild(heart);
-            setTimeout(() => heart.remove(), 6000);
-        }, i * 100);
-    }
-    // Agregar animación de float si no existe
-    if (!document.getElementById('float-animation')) {
-        const style = document.createElement('style');
-        style.id = 'float-animation';
-        style.textContent = `
-            @keyframes floatUp {
-                0% {
-                    transform: translateY(0) rotate(0deg);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 0.8;
-                }
-                90% {
-                    opacity: 0.8;
-                }
-                100% {
-                    transform: translateY(-100vh) rotate(360deg);
-                    opacity: 0;
-                }
+
+// ===== ANIMACIONES GSAP =====
+function initGSAPAnimations() {
+    // Animar título TE AMO
+    gsap.from('.title-love', {
+        duration: 1.5,
+        scale: 0.5,
+        opacity: 0,
+        ease: 'elastic.out(1, 0.5)',
+        delay: 0.2
+    });
+
+    // Animar cajas de poemas
+    gsap.from('.poem-box', {
+        duration: 1,
+        x: 100,
+        opacity: 0,
+        stagger: 0.2,
+        ease: 'power3.out',
+        delay: 0.5
+    });
+
+    // Animar fotos
+    gsap.from('.photo-frame', {
+        duration: 1.2,
+        scale: 0.8,
+        rotationY: 90,
+        opacity: 0,
+        stagger: 0.3,
+        ease: 'back.out(1.7)',
+        delay: 0.8
+    });
+
+    // Animar calendario y reproductor
+    gsap.from('.calendar-container, .music-player', {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+        ease: 'power3.out',
+        delay: 1
+    });
+
+    // Animar botón de sentimientos
+    gsap.from('.feelings-btn', {
+        duration: 1,
+        scale: 0,
+        opacity: 0,
+        ease: 'elastic.out(1, 0.5)',
+        delay: 1.5
+    });
+}
+
+// ===== CALENDARIO =====
+function initCalendar() {
+    updateCalendar();
+    setInterval(updateCalendar, 1000);
+
+    // Formatear y mostrar fecha de inicio
+    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    const day = RELATIONSHIP_START_DATE.getDate();
+    const month = months[RELATIONSHIP_START_DATE.getMonth()];
+    const year = RELATIONSHIP_START_DATE.getFullYear();
+    elements.startDate.textContent = `${day} de ${month}, ${year}`;
+}
+
+function updateCalendar() {
+    const now = new Date();
+    const diff = now - RELATIONSHIP_START_DATE;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    animateNumber(elements.days, days);
+    animateNumber(elements.hours, hours);
+}
+
+function animateNumber(element, value) {
+    const current = parseInt(element.textContent) || 0;
+    if (current !== value) {
+        gsap.to(element, {
+            duration: 0.3,
+            scale: 1.2,
+            color: '#ff6b9d',
+            onComplete: () => {
+                element.textContent = value;
+                gsap.to(element, {
+                    duration: 0.3,
+                    scale: 1,
+                    color: '#ff0040'
+                });
             }
-        `;
-        document.head.appendChild(style);
+        });
+    } else {
+        element.textContent = value;
     }
 }
+
+// ===== REPRODUCTOR DE MÚSICA =====
+function initMusicPlayer() {
+    // Generar playlist
+    renderPlaylist();
+
+    // Configurar volumen inicial
+    elements.audioPlayer.volume = elements.volumeSlider.value / 100;
+
+    // Event listeners del audio
+    elements.audioPlayer.addEventListener('timeupdate', updateProgress);
+    elements.audioPlayer.addEventListener('ended', playNext);
+    elements.audioPlayer.addEventListener('loadedmetadata', updateDuration);
+
+    // Cargar primera canción
+    if (PLAYLIST.length > 0) {
+        loadSong(0);
+    }
+}
+
+function renderPlaylist() {
+    elements.playlistItems.innerHTML = '';
+
+    PLAYLIST.forEach((song, index) => {
+        const item = document.createElement('div');
+        item.className = 'playlist-item';
+        if (index === currentSongIndex) {
+            item.classList.add('active');
+        }
+
+        item.innerHTML = `
+            <span>${index + 1}. ${song.title}</span>
+        `;
+
+        item.addEventListener('click', () => {
+            loadSong(index);
+            play();
+        });
+
+        elements.playlistItems.appendChild(item);
+    });
+}
+
+function loadSong(index) {
+    if (index < 0 || index >= PLAYLIST.length) return;
+
+    currentSongIndex = index;
+    const song = PLAYLIST[index];
+
+    elements.audioPlayer.src = `music/${song.file}`;
+    elements.songTitle.textContent = song.title;
+    elements.songArtist.textContent = song.artist;
+
+    // Actualizar playlist activa
+    document.querySelectorAll('.playlist-item').forEach((item, i) => {
+        if (i === index) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    // Manejar error de carga
+    elements.audioPlayer.onerror = () => {
+        console.warn(`No se pudo cargar: ${song.file}`);
+        elements.songTitle.textContent = `${song.title} (No encontrada)`;
+        elements.songArtist.textContent = 'Agrega el archivo en la carpeta music/';
+    };
+}
+
+function play() {
+    elements.audioPlayer.play()
+        .then(() => {
+            isPlaying = true;
+            elements.playBtn.textContent = '⏸';
+            elements.vinylRecord.classList.add('playing');
+
+            // Animar album art
+            gsap.to('.album-art', {
+                duration: 0.3,
+                scale: 1.05,
+                boxShadow: '0 15px 60px rgba(255, 0, 64, 0.3)'
+            });
+        })
+        .catch(err => {
+            console.error('Error al reproducir:', err);
+        });
+}
+
+function pause() {
+    elements.audioPlayer.pause();
+    isPlaying = false;
+    elements.playBtn.textContent = '▶';
+    elements.vinylRecord.classList.remove('playing');
+
+    gsap.to('.album-art', {
+        duration: 0.3,
+        scale: 1,
+        boxShadow: '0 10px 40px rgba(255, 0, 64, 0.15)'
+    });
+}
+
+function togglePlay() {
+    if (isPlaying) {
+        pause();
+    } else {
+        play();
+    }
+}
+
+function playNext() {
+    currentSongIndex = (currentSongIndex + 1) % PLAYLIST.length;
+    loadSong(currentSongIndex);
+    play();
+}
+
+function playPrev() {
+    currentSongIndex = (currentSongIndex - 1 + PLAYLIST.length) % PLAYLIST.length;
+    loadSong(currentSongIndex);
+    play();
+}
+
+function updateProgress() {
+    const { currentTime, duration } = elements.audioPlayer;
+
+    if (duration) {
+        const percent = (currentTime / duration) * 100;
+        elements.progress.style.width = percent + '%';
+
+        elements.currentTime.textContent = formatTime(currentTime);
+    }
+}
+
+function updateDuration() {
+    const { duration } = elements.audioPlayer;
+    if (duration && !isNaN(duration)) {
+        elements.duration.textContent = formatTime(duration);
+    }
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+function seek(e) {
+    const { duration } = elements.audioPlayer;
+    const rect = elements.progressBar.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percent = x / rect.width;
+
+    elements.audioPlayer.currentTime = duration * percent;
+}
+
+function changeVolume(e) {
+    const volume = e.target.value / 100;
+    elements.audioPlayer.volume = volume;
+}
+
+// ===== SECCIÓN DE HISTORIA =====
+function initStorySection() {
+    elements.storyTexts = document.querySelectorAll('.story-text');
+}
+
+function showStory() {
+    elements.storySection.classList.add('active');
+
+    // Animación con GSAP
+    gsap.to(elements.storySection, {
+        duration: 0.5,
+        opacity: 1,
+        ease: 'power2.out'
+    });
+
+    gsap.from('.story-title', {
+        duration: 1,
+        y: -50,
+        opacity: 0,
+        ease: 'back.out(1.7)',
+        delay: 0.2
+    });
+
+    gsap.from('.story-entry', {
+        duration: 0.8,
+        y: 30,
+        opacity: 0,
+        stagger: 0.15,
+        ease: 'power3.out',
+        delay: 0.4
+    });
+
+    // Ocultar main content
+    gsap.to(elements.mainContent, {
+        duration: 0.5,
+        opacity: 0,
+        scale: 0.95,
+        ease: 'power2.in'
+    });
+}
+
+function hideStory() {
+    gsap.to(elements.storySection, {
+        duration: 0.5,
+        opacity: 0,
+        ease: 'power2.in',
+        onComplete: () => {
+            elements.storySection.classList.remove('active');
+        }
+    });
+
+    // Mostrar main content
+    gsap.to(elements.mainContent, {
+        duration: 0.5,
+        opacity: 1,
+        scale: 1,
+        ease: 'power2.out'
+    });
+}
+
+function saveStory() {
+    const storyData = {};
+
+    elements.storyTexts.forEach((textarea, index) => {
+        storyData[`story_${index}`] = textarea.value;
+    });
+
+    localStorage.setItem('loveStory', JSON.stringify(storyData));
+
+    // Feedback visual
+    const btn = elements.saveStory;
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Guardado!';
+    btn.style.background = 'linear-gradient(135deg, #00c853, #64dd17)';
+
+    gsap.to(btn, {
+        duration: 0.3,
+        scale: 1.1,
+        ease: 'back.out(1.7)'
+    });
+
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+        gsap.to(btn, {
+            duration: 0.3,
+            scale: 1
+        });
+    }, 2000);
+}
+
+function loadStoryFromStorage() {
+    const savedStory = localStorage.getItem('loveStory');
+
+    if (savedStory) {
+        const storyData = JSON.parse(savedStory);
+
+        elements.storyTexts.forEach((textarea, index) => {
+            const key = `story_${index}`;
+            if (storyData[key]) {
+                textarea.value = storyData[key];
+            }
+        });
+    }
+}
+
+// ===== EVENT LISTENERS =====
+function initEventListeners() {
+    // Reproductor
+    elements.playBtn.addEventListener('click', togglePlay);
+    elements.prevBtn.addEventListener('click', playPrev);
+    elements.nextBtn.addEventListener('click', playNext);
+    elements.volumeSlider.addEventListener('input', changeVolume);
+    elements.progressBar.addEventListener('click', seek);
+
+    // Botones de historia
+    elements.feelingsBtn.addEventListener('click', showStory);
+    elements.closeStory.addEventListener('click', hideStory);
+    elements.backToMain.addEventListener('click', hideStory);
+    elements.saveStory.addEventListener('click', saveStory);
+
+    // Efectos de mouse en fotos
+    document.querySelectorAll('.photo-frame').forEach(frame => {
+        frame.addEventListener('mouseenter', function() {
+            gsap.to(this, {
+                duration: 0.3,
+                scale: 1.05,
+                rotationY: 5,
+                ease: 'power2.out'
+            });
+        });
+
+        frame.addEventListener('mouseleave', function() {
+            gsap.to(this, {
+                duration: 0.3,
+                scale: 1,
+                rotationY: 0,
+                ease: 'power2.out'
+            });
+        });
+    });
+
+    // Efectos en cajas de poema
+    document.querySelectorAll('.poem-box').forEach(box => {
+        box.addEventListener('mouseenter', function() {
+            gsap.to(this, {
+                duration: 0.3,
+                scale: 1.02,
+                y: -10,
+                ease: 'power2.out'
+            });
+        });
+
+        box.addEventListener('mouseleave', function() {
+            gsap.to(this, {
+                duration: 0.3,
+                scale: 1,
+                y: 0,
+                ease: 'power2.out'
+            });
+        });
+    });
+}
+
 // ===== EFECTOS ADICIONALES =====
-// Efecto de partículas en el cursor (opcional)
-document.addEventListener('mousemove', (e) => {
-    if (Math.random() > 0.97) { // Solo ocasionalmente
-        createSparkle(e.clientX, e.clientY);
-    }
+
+// Crear corazones flotantes al hacer hover en el botón de sentimientos
+elements.feelingsBtn.addEventListener('mouseenter', () => {
+    createFloatingHearts(5);
 });
-function createSparkle(x, y) {
-    const sparkle = document.createElement('div');
-    sparkle.style.position = 'fixed';
-    sparkle.style.left = x + 'px';
-    sparkle.style.top = y + 'px';
-    sparkle.style.width = '4px';
-    sparkle.style.height = '4px';
-    sparkle.style.borderRadius = '50%';
-    sparkle.style.background = 'radial-gradient(circle, #ff6b9d, #ff0040)';
-    sparkle.style.pointerEvents = 'none';
-    sparkle.style.zIndex = '9999';
-    sparkle.style.animation = 'sparkleAnimation 1s ease-out';
-    document.body.appendChild(sparkle);
-    setTimeout(() => sparkle.remove(), 1000);
-    // Agregar animación de sparkle si no existe
-    if (!document.getElementById('sparkle-animation')) {
-        const style = document.createElement('style');
-        style.id = 'sparkle-animation';
-        style.textContent = `
-            @keyframes sparkleAnimation {
-                0% {
-                    transform: scale(1) translateY(0);
-                    opacity: 1;
-                }
-                100% {
-                    transform: scale(0) translateY(-20px);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
+
+function createFloatingHearts(count) {
+    for (let i = 0; i < count; i++) {
+        const heart = document.createElement('div');
+        heart.textContent = '❤️';
+        heart.style.position = 'fixed';
+        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+        heart.style.left = elements.feelingsBtn.getBoundingClientRect().left +
+                          Math.random() * elements.feelingsBtn.offsetWidth + 'px';
+        heart.style.top = elements.feelingsBtn.getBoundingClientRect().top + 'px';
+        heart.style.zIndex = '9999';
+        heart.style.pointerEvents = 'none';
+        heart.style.opacity = '0.8';
+
+        document.body.appendChild(heart);
+
+        // Animar con GSAP
+        gsap.to(heart, {
+            duration: 2 + Math.random(),
+            y: -200,
+            x: (Math.random() - 0.5) * 100,
+            opacity: 0,
+            rotation: Math.random() * 360,
+            ease: 'power1.out',
+            onComplete: () => heart.remove()
+        });
     }
 }
-// ===== LOG DE DESARROLLO =====
-console.log('%c💕 Página romántica creada con amor 💕', 'color: #ff0040; font-size: 20px; font-weight: bold;');
-console.log('%cRecuerda cambiar la contraseña y configurar la fecha en script.js', 'color: #ff6b9d; font-size: 14px;');
+
+// Mensaje de consola
+console.log('%c📝 Instrucciones:', 'color: #ff6b9d; font-size: 16px; font-weight: bold;');
+console.log('%c1. Coloca tus fotos en la carpeta "img" con los nombres "foto1.jpg" y "foto2.jpg"', 'color: #666; font-size: 12px;');
+console.log('%c2. Agrega tus canciones MP3 en la carpeta "music"', 'color: #666; font-size: 12px;');
+console.log('%c3. Actualiza la variable PLAYLIST en script.js con los nombres de tus archivos', 'color: #666; font-size: 12px;');
+console.log('%c4. Cambia la fecha RELATIONSHIP_START_DATE a tu fecha especial', 'color: #666; font-size: 12px;');
+console.log('%c5. Personaliza los poemas en index.html', 'color: #666; font-size: 12px;');

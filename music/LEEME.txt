@@ -1,0 +1,82 @@
+╔════════════════════════════════════════════════════════════════╗
+║          INSTRUCCIONES PARA EL REPRODUCTOR DE MÚSICA           ║
+╚════════════════════════════════════════════════════════════════╝
+
+📁 CÓMO AGREGAR CANCIONES:
+═══════════════════════════════════════════════════════════════
+
+1. Coloca tus archivos MP3 en esta carpeta (music/)
+
+2. Abre el archivo: js/script.js
+
+3. Busca la sección PLAYLIST (alrededor de la línea 10)
+
+4. Actualiza la lista con tus canciones:
+
+   const PLAYLIST = [
+       {
+           title: "Nombre de tu canción",
+           artist: "Nombre del artista",
+           file: "nombre-del-archivo.mp3"
+       },
+       {
+           title: "Segunda canción",
+           artist: "Otro artista",
+           file: "segunda-cancion.mp3"
+       },
+       // Agrega más canciones aquí...
+   ];
+
+
+🎵 EJEMPLO:
+═══════════════════════════════════════════════════════════════
+
+Si tienes estos archivos en la carpeta music/:
+  - perfect.mp3
+  - all-of-me.mp3
+  - thinking-out-loud.mp3
+
+Tu PLAYLIST debería verse así:
+
+const PLAYLIST = [
+    {
+        title: "Perfect",
+        artist: "Ed Sheeran",
+        file: "perfect.mp3"
+    },
+    {
+        title: "All of Me",
+        artist: "John Legend",
+        file: "all-of-me.mp3"
+    },
+    {
+        title: "Thinking Out Loud",
+        artist: "Ed Sheeran",
+        file: "thinking-out-loud.mp3"
+    }
+];
+
+
+📝 NOTAS IMPORTANTES:
+═══════════════════════════════════════════════════════════════
+
+• Asegúrate de que los nombres de archivo coincidan exactamente
+  (incluyendo mayúsculas/minúsculas y espacios)
+
+• Los archivos deben estar en formato MP3 para mejor compatibilidad
+
+• Puedes agregar tantas canciones como quieras
+
+• El reproductor automáticamente pasará a la siguiente canción
+  cuando termine la actual
+
+
+💡 RECOMENDACIONES:
+═══════════════════════════════════════════════════════════════
+
+✓ Usa canciones que tengan significado especial para ustedes
+✓ Mantén los nombres de archivo simples (sin caracteres especiales)
+✓ Agrega al menos 3-5 canciones para una buena experiencia
+
+
+❤️ DISFRUTA DE TU MÚSICA ROMÁNTICA ❤️
