@@ -8,110 +8,223 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="contenedor-principal">
-        <div class="apartado apartado-1">
-            <p>
-                Honey, I want you to see this little something <br>
+    <!-- Hero Section -->
+    <section class="hero-section fade-in">
+        <div class="hero-content">
+            <div class="decorative-line"></div>
+            <h1 class="hero-title">For You</h1>
+            <p class="hero-text">
+                Honey, I want you to see this little something<br>
                 I made for you.
             </p>
+            <div class="decorative-line"></div>
         </div>
-        <div class="apartado apartado-2">
-            <p>
-                Te amo. En ti encontré todo lo que siempre soñé. <br>
-                Eres la esperanza que me mueve, el amor que me <br>
-                define y el sueño que vivo cada día. Soy el hombre que soy gracias a ti, <br>
-                y mi felicidad... mi felicidad, eres tú.
-            </p>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
-        <div class="apartado apartado-imagen">
-            <img src="https://images.unsplash.com/photo-1513279922550-250c2129b13a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Imagen horizontal de ejemplo">
-        </div>
-        <div class="apartado apartado-3">
-            <div id="calendar" class="calendar"></div>
-            <div id="counter" class="counter"></div>
-        </div>
-        <div class="apartado apartado-4">
-            <div class="music-player">
-                <div class="player-header">
-                    <h3>Nuestra Playlist</h3>
+    </section>
+    <!-- Love Message Section -->
+    <section class="love-section fade-in">
+        <div class="container">
+            <div class="love-content">
+                <div class="heart-icon">
+                    <i class="fas fa-heart"></i>
                 </div>
-                <div class="album-art-container">
-                    <img id="album-art" src="" alt="Album Art" class="album-art">
-                </div>
-                <div class="song-details">
-                    <h4 id="song-title">Título de la Canción</h4>
-                    <p id="song-artist">Artista</p>
-                </div>
-                <div class="progress-container" id="progress-bar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                <div class="time-display">
-                    <span id="current-time">0:00</span>
-                    <span id="duration">0:00</span>
-                </div>
-                <div class="player-controls">
-                    <button id="prev-btn" class="control-btn">
-                        <i class="fas fa-backward"></i>
-                    </button>
-                    <button id="play-btn" class="control-btn play-btn">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <button id="next-btn" class="control-btn">
-                        <i class="fas fa-forward"></i>
-                    </button>
-                </div>
-                <div class="song-list-container">
-                    <h4>Lista de Reproducción</h4>
-                    <ul id="song-list" class="song-list"></ul>
-                </div>
-                <audio id="audio-player"></audio>
+                <p class="love-text">
+                    Te amo. En ti encontré todo lo que siempre soñé.<br>
+                    Eres la esperanza que me mueve, el amor que me define<br>
+                    y el sueño que vivo cada día. Soy el hombre que soy gracias a ti,<br>
+                    y mi felicidad... mi felicidad, eres tú.
+                </p>
             </div>
         </div>
-        <div class="apartado apartado-5">
-            <h1>IMPORTANTE (No lo olvides :3)</h1>
-            <p>
-                Amorcito, quiero que nunca, ni por un segundo, dudes de cuánto te quiero.
-                Pero no es solo un "te quiero" simple. Es un "te quiero" que ha redefinido mi mundo.
-                Llegaste a mi vida y le diste un propósito, un color y una calidez
-                que yo no sabía que me faltaba.
-            </p>
-            <p>
-                Estoy inmensamente orgulloso de ti.
-                Veo cada día cómo te esfuerzas, cómo enfrentas cada desafío
-                con una fortaleza que me deja sin palabras.
-                Estoy orgulloso de tus logros, claro, pero estoy aún más orgulloso
-                de la persona que eres, de tu bondad, de tu inteligencia
-                y del corazón tan increíble que tienes.
-                Eres mi inspiración.
-            </p>
-            <p>
-                Siento con cada fibra de mi ser que te mereces el mundo.
-                Te mereces cada estrella del cielo, cada amanecer hermoso y cada sueño cumplido.
-                Y aunque el mundo es gigante, quiero que sepas que
-                no descansaré hasta construir para ti una vida donde te sientas
-                plena, segura y valorada como la reina que eres.
-                Mi misión es dártelo todo.
-            </p>
-            <p>
-                Te mereces la felicidad más pura y genuina que exista.
-                No solo momentos felices, sino una vida de felicidad.
-                Esa sensación que te abraza el corazón y te llena de paz,
-                esa calidez que te hace sonreír solo por estar viva.
-                Y si puedo ser el arquitecto de esa felicidad,
-                lo seré con cada acción de mi vida.
-            </p>
-            <p>
-                Te quiero. Te quiero hoy, con una profundidad que sigue creciendo.
-                Y te querré siempre. Mi amor por ti no es una promesa,
-                es el aire que respiro.
-                Siempre te querré.
-            </p>
+    </section>
+    <!-- Decorative Image Section -->
+    <section class="image-section fade-in">
+        <div class="image-wrapper">
+            <img src="https://images.unsplash.com/photo-1513279922550-250c2129b13a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                 alt="Decorative Image"
+                 class="decorative-image">
+            <div class="image-overlay"></div>
         </div>
-        <div class="apartado apartado-6">
-            <img src="img/novia.jpg" alt="Foto de mi novia">
+    </section>
+    <!-- Calendar & Counter Section -->
+    <section class="stats-section fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <!-- Calendar -->
+                <div class="stats-card calendar-card">
+                    <h2 class="card-title">Nuestro Día Especial</h2>
+                    <div id="calendar" class="calendar"></div>
+                </div>
+                <!-- Counter -->
+                <div class="stats-card counter-card">
+                    <h2 class="card-title">Tiempo Juntos</h2>
+                    <div id="counter" class="counter"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Music Player Section -->
+    <section class="music-section fade-in">
+        <div class="container">
+            <div class="music-player">
+                <h2 class="section-title">Canciones que te dedico</h2>
+                <div class="player-main">
+                    <div class="album-art-container">
+                        <img id="album-art" src="" alt="Album Art" class="album-art">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="player-details">
+                        <div class="song-info">
+                            <h3 id="song-title" class="song-title">Título de la Canción</h3>
+                            <p id="song-artist" class="song-artist">Artista</p>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-bar" id="progress-bar">
+                                <div class="progress-fill" id="progress"></div>
+                            </div>
+                            <div class="time-info">
+                                <span id="current-time" class="time">0:00</span>
+                                <span id="duration" class="time">0:00</span>
+                            </div>
+                        </div>
+                        <div class="player-controls">
+                            <button id="prev-btn" class="control-btn">
+                                <i class="fas fa-step-backward"></i>
+                            </button>
+                            <button id="play-btn" class="control-btn play-btn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button id="next-btn" class="control-btn">
+                                <i class="fas fa-step-forward"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="playlist">
+                    <h3 class="playlist-title">Lista de Reproducción</h3>
+                    <ul id="song-list" class="song-list"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Poem Section -->
+    <section class="poem-section fade-in">
+        <div class="container">
+            <div class="poem-content">
+                <h2 class="poem-title">IMPORTANTE (No lo olvides :3)</h2>
+                <div class="poem-text">
+                    <p>
+                        Amorcito, quiero que nunca, ni por un segundo, dudes de cuánto te quiero.
+                        Pero no es solo un "te quiero" simple. Es un "te quiero" que ha redefinido mi mundo.
+                        Llegaste a mi vida y le diste un propósito, un color y una calidez
+                        que yo no sabía que me faltaba.
+                    </p>
+                    <p>
+                        Estoy inmensamente orgulloso de ti.
+                        Veo cada día cómo te esfuerzas, cómo enfrentas cada desafío
+                        con una fortaleza que me deja sin palabras.
+                        Estoy orgulloso de tus logros, claro, pero estoy aún más orgulloso
+                        de la persona que eres, de tu bondad, de tu inteligencia
+                        y del corazón tan increíble que tienes.
+                        Eres mi inspiración.
+                    </p>
+                    <p>
+                        Siento con cada fibra de mi ser que te mereces el mundo.
+                        Te mereces cada estrella del cielo, cada amanecer hermoso y cada sueño cumplido.
+                        Y aunque el mundo es gigante, quiero que sepas que
+                        no descansaré hasta construir para ti una vida donde te sientas
+                        plena, segura y valorada como la reina que eres.
+                        Mi misión es dártelo todo.
+                    </p>
+                    <p>
+                        Te mereces la felicidad más pura y genuina que exista.
+                        No solo momentos felices, sino una vida de felicidad.
+                        Esa sensación que te abraza el corazón y te llena de paz,
+                        esa calidez que te hace sonreír solo por estar viva.
+                        Y si puedo ser el arquitecto de esa felicidad,
+                        lo seré con cada acción de mi vida.
+                    </p>
+                    <p>
+                        Te quiero. Te quiero hoy, con una profundidad que sigue creciendo.
+                        Y te querré siempre. Mi amor por ti no es una promesa,
+                        es el aire que respiro.
+                        Siempre te querré.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Photo Section -->
+    <section class="photo-section fade-in">
+        <div class="photo-wrapper">
+            <div class="photo-frame">
+                <img src="img/novia.jpg" alt="Mi Amor" class="girlfriend-photo">
+                <div class="photo-caption">
+                    <i class="fas fa-heart"></i>
+                    <p>Mi Todo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Special Message Section -->
+    <section class="special-section fade-in">
+        <div class="container">
+            <div class="special-content">
+                <div class="special-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h2 class="special-title">Tengo algo más para ti...</h2>
+                <button id="open-letter-btn" class="special-btn">
+                    <span>Esto es para ti</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Modal for Special Letter -->
+    <div id="letter-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <i class="fas fa-envelope-open-text"></i>
+                <h2>Una carta especial para ti</h2>
+            </div>
+            <div class="modal-body">
+                <div class="letter-content">
+                    <p>
+                        <!-- Aquí puedes agregar tu lectura especial -->
+                        Mi amor, esta es una carta especial que preparé para ti.
+                        Cada palabra aquí escrita viene del fondo de mi corazón.
+                    </p>
+                    <p>
+                        Desde que llegaste a mi vida, todo tiene más sentido.
+                        Cada amanecer es más brillante, cada sonrisa es más genuina,
+                        y cada momento contigo es un tesoro que guardo en mi corazón.
+                    </p>
+                    <p>
+                        Quiero que sepas que mi compromiso contigo va más allá de las palabras.
+                        Es un compromiso del alma, de estar a tu lado en cada paso,
+                        de celebrar tus victorias y de sostenerte en los momentos difíciles.
+                    </p>
+                    <p>
+                        Gracias por elegirme, por amarme, por ser mi compañera de vida.
+                        Eres y serás siempre mi persona favorita, mi hogar, mi todo.
+                    </p>
+                    <p class="letter-signature">
+                        Con todo mi amor,<br>
+                        Tu enamorado ♥
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
+    <audio id="audio-player"></audio>
     <script src="js/script.js"></script>
 </body>
 </html>

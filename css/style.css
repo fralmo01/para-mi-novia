@@ -1,540 +1,837 @@
-/* Importar fuentes románticas de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
-/* Reset y base */
+/* ========================================
+   IMPORTAR FUENTES ELEGANTES
+======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap');
+/* ========================================
+   VARIABLES DE COLOR Y TIPOGRAFÍA
+======================================== */
+:root {
+    /* Colores principales */
+    --color-white: #FFFFFF;
+    --color-cream: #FAF9F6;
+    --color-beige: #F5F1ED;
+    --color-rose: #E8B4B8;
+    --color-rose-dark: #D4949A;
+    --color-gold: #D4AF37;
+    --color-gold-light: #F4E4C1;
+    --color-text-dark: #2C2C2C;
+    --color-text-gray: #6B6B6B;
+    --color-text-light: #A0A0A0;
+    /* Tipografías */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Cormorant Garamond', serif;
+    --font-sans: 'Lato', sans-serif;
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    /* Sombras */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+    /* Transiciones */
+    --transition-fast: 0.3s ease;
+    --transition-smooth: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* ========================================
+   RESET Y BASE
+======================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-/* Variables de colores románticos */
-:root {
-    --color-primary: #ff1744;
-    --color-secondary: #ff4081;
-    --color-accent: #f50057;
-    --color-light: #ffe4e1;
-    --color-dark: #4a0e0e;
-    --color-glass: rgba(255, 255, 255, 0.1);
-    --color-glass-border: rgba(255, 255, 255, 0.2);
-}
-/* Estilos del body y fondo animado */
-body {
-    font-family: 'Cormorant Garamond', serif;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    position: relative;
+html {
+    scroll-behavior: smooth;
     overflow-x: hidden;
 }
-/* CAPA 1: Fondo con corazón animado */
-body::before {
-    content: "♥";
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 300px;
-    color: rgba(255, 23, 68, 0.15);
-    z-index: 0;
-    animation: heartbeat 2s ease-in-out infinite;
-    pointer-events: none;
-}
-/* Partículas que emanan del corazón */
-body::after {
-    content: "";
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    background: var(--color-primary);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    pointer-events: none;
-    box-shadow:
-        0 0 20px 10px rgba(255, 23, 68, 0.3),
-        40px 40px 30px 0 rgba(255, 23, 68, 0.2),
-        -40px 40px 30px 0 rgba(255, 23, 68, 0.2),
-        40px -40px 30px 0 rgba(255, 23, 68, 0.2),
-        -40px -40px 30px 0 rgba(255, 23, 68, 0.2),
-        80px 80px 40px 0 rgba(255, 64, 129, 0.15),
-        -80px 80px 40px 0 rgba(255, 64, 129, 0.15),
-        80px -80px 40px 0 rgba(255, 64, 129, 0.15),
-        -80px -80px 40px 0 rgba(255, 64, 129, 0.15),
-        120px 120px 50px 0 rgba(245, 0, 87, 0.1),
-        -120px 120px 50px 0 rgba(245, 0, 87, 0.1),
-        120px -120px 50px 0 rgba(245, 0, 87, 0.1),
-        -120px -120px 50px 0 rgba(245, 0, 87, 0.1);
-    animation: particlesPulse 3s ease-in-out infinite;
-}
-/* Animación del latido del corazón */
-@keyframes heartbeat {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    10% {
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    20% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    30% {
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    40% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
-/* Animación de las partículas */
-@keyframes particlesPulse {
-    0%, 100% {
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1.2);
-    }
-}
-/* CAPA 2: Contenedor principal con efecto frosted glass */
-.contenedor-principal {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1400px;
-    margin: 40px auto;
-    padding: 20px;
-    background: var(--color-glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 30px;
-    border: 1px solid var(--color-glass-border);
-    box-shadow:
-        0 8px 32px 0 rgba(31, 38, 135, 0.37),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
-    animation: fadeIn 1s ease-in;
-}
-/* Animación de fade-in */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* Estilos generales para los apartados */
-.apartado {
-    flex-basis: calc(50% - 20px);
-    flex-grow: 1;
-    flex-shrink: 1;
-    margin: 10px;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    animation: fadeInUp 0.6s ease-out backwards;
-    color: #fff;
-}
-.apartado:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-/* Animaciones escalonadas para cada apartado */
-.apartado-1 { animation-delay: 0.1s; }
-.apartado-2 { animation-delay: 0.2s; }
-.apartado-imagen { animation-delay: 0.3s; }
-.apartado-3 { animation-delay: 0.4s; }
-.apartado-4 { animation-delay: 0.5s; }
-.apartado-5 { animation-delay: 0.6s; }
-.apartado-6 { animation-delay: 0.7s; }
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* Estilos para el apartado de imagen completa */
-.apartado-imagen {
-    flex-basis: calc(100% - 20px);
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.3);
-}
-.apartado img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 15px;
-}
-/* Tipografía romántica */
-h1, h2, h3 {
-    font-family: 'Great Vibes', cursive;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-h2 {
-    font-size: 2rem;
-}
-h3 {
-    font-size: 1.8rem;
-}
-p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+body {
+    font-family: var(--font-body);
+    color: var(--color-text-dark);
+    background-color: var(--color-cream);
     line-height: 1.8;
-    color: #fff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    overflow-x: hidden;
 }
-/* ========== CALENDARIO ========== */
-.calendar {
-    margin-bottom: 30px;
+/* ========================================
+   ANIMACIONES FADE-IN
+======================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
 }
-.calendar-header {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+.fade-in:nth-child(4) { animation-delay: 0.4s; }
+.fade-in:nth-child(5) { animation-delay: 0.5s; }
+.fade-in:nth-child(6) { animation-delay: 0.6s; }
+.fade-in:nth-child(7) { animation-delay: 0.7s; }
+.fade-in:nth-child(8) { animation-delay: 0.8s; }
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.calendar-weekdays {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    margin-bottom: 10px;
+/* ========================================
+   CONTENEDOR PRINCIPAL
+======================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
-.weekday {
-    text-align: center;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 0.9rem;
-    padding: 8px 0;
-}
-.calendar-days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-}
-.calendar-day {
-    aspect-ratio: 1;
+/* ========================================
+   HERO SECTION
+======================================== */
+.hero-section {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    font-size: 1rem;
-    color: #fff;
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%);
     position: relative;
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+}
+.decorative-line {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-rose), transparent);
+    margin: var(--spacing-md) auto;
+    position: relative;
+}
+.decorative-line::before {
+    content: '♥';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-rose);
+    font-size: 1.5rem;
+    background: var(--color-cream);
+    padding: 0 1rem;
+}
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: -0.02em;
+}
+.hero-text {
+    font-family: var(--font-body);
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    color: var(--color-text-gray);
+    line-height: 1.8;
+    font-style: italic;
+}
+.scroll-indicator {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+.scroll-indicator i {
+    font-size: 2rem;
+    color: var(--color-rose);
+}
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+/* ========================================
+   LOVE MESSAGE SECTION
+======================================== */
+.love-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-white);
+}
+.love-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.heart-icon {
+    margin-bottom: var(--spacing-md);
+}
+.heart-icon i {
+    font-size: 3rem;
+    color: var(--color-rose);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+}
+.love-text {
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    color: var(--color-text-dark);
+    line-height: 1.8;
+    font-weight: 400;
+}
+/* ========================================
+   DECORATIVE IMAGE SECTION
+======================================== */
+.image-section {
+    padding: var(--spacing-lg) 0;
+    background-color: var(--color-beige);
+}
+.image-wrapper {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.decorative-image {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-smooth);
+}
+.image-wrapper:hover .decorative-image {
+    transform: scale(1.05);
+}
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
+    pointer-events: none;
+}
+/* ========================================
+   STATS SECTION (CALENDAR & COUNTER)
+======================================== */
+.stats-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-white);
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+.stats-card {
+    background: var(--color-cream);
+    padding: var(--spacing-lg);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+/* CALENDARIO */
+.calendar {
+    width: 100%;
+}
+.calendar-header {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-rose-dark);
+    margin-bottom: var(--spacing-md);
+}
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.weekday {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-gray);
+    padding: 0.5rem;
+}
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border-radius: 12px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    position: relative;
+}
+.calendar-day:not(.empty):hover {
+    background: var(--color-gold-light);
+    transform: scale(1.05);
 }
 .calendar-day.empty {
     background: transparent;
 }
-.calendar-day:not(.empty):hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-}
-/* Día especial con corazón animado */
 .calendar-day.special-day {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    box-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
-    animation: specialDayGlow 2s ease-in-out infinite;
+    background: linear-gradient(135deg, var(--color-rose) 0%, var(--color-rose-dark) 100%);
+    color: var(--color-white);
+    box-shadow: 0 0 20px rgba(232, 180, 184, 0.5);
+    font-weight: 700;
 }
 .calendar-day.special-day .heart {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 2rem;
-    color: #fff;
-    animation: heartbeatSmall 1.5s ease-in-out infinite;
+    animation: heartbeat 1.5s ease-in-out infinite;
 }
 .calendar-day.special-day .day-number {
+    position: relative;
+    z-index: 1;
     font-size: 0.8rem;
-    margin-bottom: 5px;
 }
-@keyframes specialDayGlow {
-    0%, 100% {
-        box-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 30px rgba(255, 23, 68, 0.8);
-    }
-}
-@keyframes heartbeatSmall {
-    0%, 100% {
-        transform: scale(1);
-    }
-    10% {
-        transform: scale(1.2);
-    }
-    20% {
-        transform: scale(1);
-    }
-    30% {
-        transform: scale(1.2);
-    }
-    40% {
-        transform: scale(1);
-    }
-}
-/* ========== CONTADOR ========== */
+/* CONTADOR */
 .counter {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    padding: 25px;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-.counter-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2rem;
-    text-align: center;
-    color: #fff;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    width: 100%;
 }
 .counter-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
 }
 .counter-item {
     text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px 10px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
+    background: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast);
 }
 .counter-item:hover {
-    background: rgba(255, 255, 255, 0.2);
     transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
 }
 .counter-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-family: var(--font-heading);
+    font-size: 3rem;
     font-weight: 700;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: counterPulse 2s ease-in-out infinite;
+    color: var(--color-rose-dark);
+    display: block;
+    margin-bottom: 0.5rem;
 }
 .counter-label {
+    font-family: var(--font-sans);
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-top: 5px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: var(--color-text-gray);
 }
-@keyframes counterPulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
+/* ========================================
+   MUSIC PLAYER SECTION
+======================================== */
+.music-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-beige);
 }
-/* ========== REPRODUCTOR DE MÚSICA ========== */
 .music-player {
-    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
-.player-header h3 {
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-text-dark);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-lg);
+}
+.player-main {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-lg);
 }
 .album-art-container {
+    position: relative;
     width: 100%;
-    max-width: 300px;
-    margin: 0 auto 20px;
+    max-width: 350px;
+    margin: 0 auto var(--spacing-lg);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    position: relative;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
 }
 .album-art {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-smooth);
 }
 .album-art-container:hover .album-art {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
-.song-details {
-    text-align: center;
-    margin-bottom: 20px;
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
 }
-.song-details h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 5px;
+.album-art-container:hover .play-overlay {
+    opacity: 1;
 }
-.song-details p {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.8);
+.play-overlay i {
+    font-size: 4rem;
+    color: var(--color-white);
 }
-/* Barra de progreso */
-.progress-container {
+.player-details {
     width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.2);
+}
+.song-info {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+.song-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.5rem;
+}
+.song-artist {
+    font-size: 1.2rem;
+    color: var(--color-text-gray);
+}
+.progress-section {
+    margin-bottom: var(--spacing-md);
+}
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--color-beige);
     border-radius: 10px;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
     overflow: hidden;
 }
-.progress {
+.progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    background: linear-gradient(90deg, var(--color-rose), var(--color-rose-dark));
     border-radius: 10px;
     width: 0%;
     transition: width 0.1s linear;
 }
-.time-display {
+.time-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    font-family: var(--font-sans);
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text-gray);
 }
-/* Controles del reproductor */
 .player-controls {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 30px;
+    justify-content: center;
+    gap: var(--spacing-md);
 }
 .control-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
+    background: var(--color-cream);
+    border: 2px solid var(--color-beige);
     border-radius: 50%;
     width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    font-size: 1.2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all var(--transition-fast);
+    color: var(--color-text-dark);
+    font-size: 1.2rem;
 }
 .control-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--color-rose);
+    color: var(--color-white);
     transform: scale(1.1);
 }
 .play-btn {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     font-size: 1.5rem;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    background: linear-gradient(135deg, var(--color-rose), var(--color-rose-dark));
+    color: var(--color-white);
+    border-color: var(--color-rose-dark);
 }
 .play-btn:hover {
-    box-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
+    transform: scale(1.15);
+    box-shadow: 0 0 30px rgba(232, 180, 184, 0.5);
 }
-/* Lista de canciones */
-.song-list-container {
-    margin-top: 20px;
+/* PLAYLIST */
+.playlist {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
 }
-.song-list-container h4 {
-    font-family: 'Playfair Display', serif;
+.playlist-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-text-dark);
     text-align: center;
-    margin-bottom: 15px;
-    color: #fff;
+    margin-bottom: var(--spacing-md);
 }
 .song-list {
     list-style: none;
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
 }
 .song-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 12px 15px;
-    margin-bottom: 8px;
-    border-radius: 10px;
+    background: var(--color-cream);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 .song-item:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--color-gold-light);
     transform: translateX(5px);
 }
 .song-item.active {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 15px rgba(255, 23, 68, 0.4);
-}
-.song-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    background: linear-gradient(135deg, var(--color-rose), var(--color-rose-dark));
+    color: var(--color-white);
 }
 .song-number {
-    width: 30px;
-    height: 30px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 35px;
+    height: 35px;
+    background: var(--color-white);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9rem;
     flex-shrink: 0;
 }
+.song-item.active .song-number {
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--color-white);
+}
 .song-name {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
     font-weight: 600;
-    font-size: 1rem;
-    color: #fff;
+    margin-bottom: 0.2rem;
 }
 .artist-name {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 /* Scrollbar personalizado */
 .song-list::-webkit-scrollbar {
     width: 8px;
 }
 .song-list::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-beige);
     border-radius: 10px;
 }
 .song-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--color-rose);
     border-radius: 10px;
 }
-.song-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
+/* ========================================
+   POEM SECTION
+======================================== */
+.poem-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-white);
 }
-/* ========== RESPONSIVE ========== */
+.poem-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.poem-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-text-dark);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+.poem-text {
+    background: var(--color-cream);
+    padding: var(--spacing-lg);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+}
+.poem-text p {
+    font-size: 1.3rem;
+    line-height: 2;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+    text-align: justify;
+}
+.poem-text p:last-child {
+    margin-bottom: 0;
+}
+/* ========================================
+   PHOTO SECTION
+======================================== */
+.photo-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-beige);
+}
+.photo-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.photo-frame {
+    position: relative;
+    background: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-smooth);
+}
+.photo-frame:hover {
+    transform: translateY(-10px);
+}
+.girlfriend-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+}
+.photo-caption {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+.photo-caption i {
+    color: var(--color-rose);
+    font-size: 1.5rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+.photo-caption p {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-text-dark);
+    margin: 0;
+}
+/* ========================================
+   SPECIAL MESSAGE SECTION
+======================================== */
+.special-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%);
+}
+.special-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.special-icon {
+    margin-bottom: var(--spacing-md);
+}
+.special-icon i {
+    font-size: 4rem;
+    color: var(--color-gold);
+    animation: bounce 2s infinite;
+}
+.special-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-lg);
+}
+.special-btn {
+    background: linear-gradient(135deg, var(--color-rose), var(--color-rose-dark));
+    color: var(--color-white);
+    border: none;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    box-shadow: var(--shadow-md);
+}
+.special-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(232, 180, 184, 0.4);
+}
+.special-btn i {
+    transition: transform var(--transition-fast);
+}
+.special-btn:hover i {
+    transform: translateX(5px);
+}
+/* ========================================
+   MODAL
+======================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+.modal.active {
+    display: flex;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.modal-content {
+    background: var(--color-white);
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: var(--color-rose);
+    color: var(--color-white);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all var(--transition-fast);
+    z-index: 10;
+}
+.modal-close:hover {
+    background: var(--color-rose-dark);
+    transform: rotate(90deg);
+}
+.modal-header {
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+    border-bottom: 2px solid var(--color-beige);
+}
+.modal-header i {
+    font-size: 3rem;
+    color: var(--color-rose);
+    margin-bottom: var(--spacing-sm);
+}
+.modal-header h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-text-dark);
+}
+.modal-body {
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+.letter-content p {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+    text-align: justify;
+}
+.letter-signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: var(--spacing-lg);
+    font-size: 1.3rem;
+    color: var(--color-rose-dark);
+}
+/* Scrollbar del modal */
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+.modal-content::-webkit-scrollbar-track {
+    background: var(--color-beige);
+}
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--color-rose);
+    border-radius: 10px;
+}
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
 /* Tablets */
 @media (max-width: 992px) {
-    .contenedor-principal {
-        margin: 20px;
-        padding: 15px;
+    :root {
+        --spacing-xl: 4rem;
+        --spacing-lg: 3rem;
     }
-    .apartado {
-        flex-basis: calc(100% - 20px);
+    .hero-title {
+        font-size: 4rem;
     }
-    body::before {
-        font-size: 200px;
-    }
-    h1 {
+    .section-title {
         font-size: 2rem;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
     .counter-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -542,85 +839,95 @@ p {
 }
 /* Móviles */
 @media (max-width: 768px) {
-    .contenedor-principal {
-        margin: 10px;
-        padding: 10px;
+    :root {
+        --spacing-xl: 3rem;
+        --spacing-lg: 2rem;
+        --spacing-md: 1.5rem;
     }
-    .apartado {
-        margin: 8px;
-        padding: 20px;
+    body {
+        font-size: 16px;
     }
-    body::before {
-        font-size: 150px;
+    .hero-title {
+        font-size: 3rem;
     }
-    h1 {
-        font-size: 1.8rem;
+    .hero-text {
+        font-size: 1.2rem;
     }
-    h2 {
+    .love-text {
+        font-size: 1.3rem;
+    }
+    .decorative-image {
+        height: 40vh;
+    }
+    .card-title {
         font-size: 1.5rem;
-    }
-    h3 {
-        font-size: 1.4rem;
-    }
-    p {
-        font-size: 1.1rem;
-    }
-    .calendar-header {
-        font-size: 1.5rem;
-    }
-    .calendar-day {
-        font-size: 0.85rem;
     }
     .counter-value {
         font-size: 2rem;
     }
-    .counter-label {
-        font-size: 0.8rem;
+    .section-title {
+        font-size: 1.8rem;
     }
-    .album-art-container {
-        max-width: 250px;
+    .song-title {
+        font-size: 1.5rem;
     }
-    .player-controls {
-        gap: 15px;
+    .poem-title {
+        font-size: 2rem;
     }
-    .control-btn {
-        width: 45px;
-        height: 45px;
+    .poem-text p {
+        font-size: 1.1rem;
+    }
+    .special-title {
+        font-size: 2rem;
+    }
+    .special-btn {
+        padding: 1rem 2rem;
         font-size: 1rem;
     }
+    .player-main {
+        padding: var(--spacing-md);
+    }
+    .album-art-container {
+        max-width: 280px;
+    }
     .play-btn {
-        width: 55px;
-        height: 55px;
-        font-size: 1.3rem;
+        width: 60px;
+        height: 60px;
     }
 }
+/* Móviles pequeños */
 @media (max-width: 480px) {
-    body::before {
-        font-size: 100px;
+    .hero-title {
+        font-size: 2.5rem;
     }
-    h1 {
-        font-size: 1.5rem;
+    .decorative-line {
+        width: 60px;
     }
     .counter-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: var(--spacing-sm);
     }
     .counter-value {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
     .counter-label {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
-    .calendar-days {
-        gap: 5px;
+    .calendar-day {
+        font-size: 0.85rem;
     }
     .weekday {
         font-size: 0.75rem;
     }
-    .calendar-day {
-        font-size: 0.75rem;
+    .poem-text {
+        padding: var(--spacing-md);
     }
-    .album-art-container {
-        max-width: 200px;
+    .modal-content {
+        margin: var(--spacing-sm);
+    }
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+    .letter-content p {
+        font-size: 1rem;
     }
 }
