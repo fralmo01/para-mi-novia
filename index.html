@@ -3,115 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Mi Amor</title>
+    <title>Para Mi Amor Eterno</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="contenedor-principal">
-        <div class="apartado apartado-1">
-            <p>
-                Honey, I want you to see this little something <br>
-                I made for you.
-            </p>
-        </div>
-        <div class="apartado apartado-2">
-            <p>
-                Te amo. En ti encontré todo lo que siempre soñé. <br>
-                Eres la esperanza que me mueve, el amor que me <br>
-                define y el sueño que vivo cada día. Soy el hombre que soy gracias a ti, <br>
-                y mi felicidad... mi felicidad, eres tú.
-            </p>
-        </div>
-        <div class="apartado apartado-imagen">
-            <img src="https://images.unsplash.com/photo-1513279922550-250c2129b13a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Imagen horizontal de ejemplo">
-        </div>
-        <div class="apartado apartado-3">
-            <div id="calendar" class="calendar"></div>
-            <div id="counter" class="counter"></div>
-        </div>
-        <div class="apartado apartado-4">
-            <div class="music-player">
-                <div class="player-header">
-                    <h3>Nuestra Playlist</h3>
-                </div>
-                <div class="album-art-container">
-                    <img id="album-art" src="" alt="Album Art" class="album-art">
-                </div>
-                <div class="song-details">
-                    <h4 id="song-title">Título de la Canción</h4>
-                    <p id="song-artist">Artista</p>
-                </div>
-                <div class="progress-container" id="progress-bar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                <div class="time-display">
-                    <span id="current-time">0:00</span>
-                    <span id="duration">0:00</span>
-                </div>
-                <div class="player-controls">
-                    <button id="prev-btn" class="control-btn">
-                        <i class="fas fa-backward"></i>
-                    </button>
-                    <button id="play-btn" class="control-btn play-btn">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <button id="next-btn" class="control-btn">
-                        <i class="fas fa-forward"></i>
-                    </button>
-                </div>
-                <div class="song-list-container">
-                    <h4>Lista de Reproducción</h4>
-                    <ul id="song-list" class="song-list"></ul>
-                </div>
-                <audio id="audio-player"></audio>
+    <!-- Partículas de corazones flotantes -->
+    <div class="hearts-background">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <!-- Navegación flotante -->
+    <nav class="floating-nav">
+        <a href="#inicio" class="nav-item active"><i class="fas fa-home"></i></a>
+        <a href="#nosotros" class="nav-item"><i class="fas fa-heart"></i></a>
+        <a href="#galeria" class="nav-item"><i class="fas fa-images"></i></a>
+        <a href="#musica" class="nav-item"><i class="fas fa-music"></i></a>
+        <a href="#poema" class="nav-item"><i class="fas fa-feather-alt"></i></a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Para Mi Amor</h1>
+            <div class="hero-subtitle">
+                <p>Honey, I want you to see this little something</p>
+                <p class="typewriter">I made for you with all my love...</p>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
             </div>
         </div>
-        <div class="apartado apartado-5">
-            <h1>IMPORTANTE (No lo olvides :3)</h1>
-            <p>
-                Amorcito, quiero que nunca, ni por un segundo, dudes de cuánto te quiero.
-                Pero no es solo un "te quiero" simple. Es un "te quiero" que ha redefinido mi mundo.
-                Llegaste a mi vida y le diste un propósito, un color y una calidez
-                que yo no sabía que me faltaba.
-            </p>
-            <p>
-                Estoy inmensamente orgulloso de ti.
-                Veo cada día cómo te esfuerzas, cómo enfrentas cada desafío
-                con una fortaleza que me deja sin palabras.
-                Estoy orgulloso de tus logros, claro, pero estoy aún más orgulloso
-                de la persona que eres, de tu bondad, de tu inteligencia
-                y del corazón tan increíble que tienes.
-                Eres mi inspiración.
-            </p>
-            <p>
-                Siento con cada fibra de mi ser que te mereces el mundo.
-                Te mereces cada estrella del cielo, cada amanecer hermoso y cada sueño cumplido.
-                Y aunque el mundo es gigante, quiero que sepas que
-                no descansaré hasta construir para ti una vida donde te sientas
-                plena, segura y valorada como la reina que eres.
-                Mi misión es dártelo todo.
-            </p>
-            <p>
-                Te mereces la felicidad más pura y genuina que exista.
-                No solo momentos felices, sino una vida de felicidad.
-                Esa sensación que te abraza el corazón y te llena de paz,
-                esa calidez que te hace sonreír solo por estar viva.
-                Y si puedo ser el arquitecto de esa felicidad,
-                lo seré con cada acción de mi vida.
-            </p>
-            <p>
-                Te quiero. Te quiero hoy, con una profundidad que sigue creciendo.
-                Y te querré siempre. Mi amor por ti no es una promesa,
-                es el aire que respiro.
-                Siempre te querré.
-            </p>
+    </section>
+
+    <!-- Contador de tiempo -->
+    <section id="nosotros" class="time-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestro Tiempo Juntos</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="time-counter">
+                <div id="calendar" class="calendar-card"></div>
+                <div id="counter" class="counter-card"></div>
+            </div>
+
+            <div class="love-message">
+                <div class="message-box">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>
+                        Te amo. En ti encontré todo lo que siempre soñé.
+                        Eres la esperanza que me mueve, el amor que me
+                        define y el sueño que vivo cada día. Soy el hombre que soy gracias a ti,
+                        y mi felicidad... mi felicidad, eres tú.
+                    </p>
+                    <i class="fas fa-quote-right quote-icon"></i>
+                </div>
+            </div>
         </div>
-        <div class="apartado apartado-6">
-            <img src="img/novia.jpg" alt="Foto de mi novia">
+    </section>
+
+    <!-- Galería e Imagen -->
+    <section id="galeria" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Memories</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="https://images.unsplash.com/photo-1513279922550-250c2129b13a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Romantic moment">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/novia.jpg" alt="Mi amor">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Reproductor de música -->
+    <section id="musica" class="music-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestra Playlist</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="music-player-container">
+                <div class="music-player">
+                    <div class="album-art-container">
+                        <div class="vinyl-effect"></div>
+                        <img id="album-art" src="" alt="Album Art" class="album-art">
+                        <div class="playing-animation">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="song-details">
+                        <h3 id="song-title">Título de la Canción</h3>
+                        <p id="song-artist">Artista</p>
+                    </div>
+
+                    <div class="progress-container" id="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+
+                    <div class="time-display">
+                        <span id="current-time">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+
+                    <div class="player-controls">
+                        <button id="shuffle-btn" class="control-btn">
+                            <i class="fas fa-random"></i>
+                        </button>
+                        <button id="prev-btn" class="control-btn">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        <button id="play-btn" class="control-btn play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="next-btn" class="control-btn">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                        <button id="repeat-btn" class="control-btn">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+
+                    <div class="volume-control">
+                        <i class="fas fa-volume-down"></i>
+                        <input type="range" id="volume-slider" min="0" max="100" value="80">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+
+                    <audio id="audio-player"></audio>
+                </div>
+
+                <div class="playlist-container">
+                    <h3 class="playlist-title">
+                        <i class="fas fa-list-ul"></i> Playlist
+                    </h3>
+                    <ul id="song-list" class="song-list"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mensaje importante -->
+    <section class="important-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Importante (No lo olvides)</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="important-content">
+                <div class="message-card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart-broken"></i>
+                    </div>
+                    <p>
+                        Amorcito, quiero que nunca, ni por un segundo, dudes de cuánto te quiero.
+                        Pero no es solo un "te quiero" simple. Es un "te quiero" que ha redefinido mi mundo.
+                        Llegaste a mi vida y le diste un propósito, un color y una calidez
+                        que yo no sabía que me faltaba.
+                    </p>
+                </div>
+
+                <div class="message-card">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <p>
+                        Estoy inmensamente orgulloso de ti.
+                        Veo cada día cómo te esfuerzas, cómo enfrentas cada desafío
+                        con una fortaleza que me deja sin palabras.
+                        Estoy orgulloso de tus logros, claro, pero estoy aún más orgulloso
+                        de la persona que eres, de tu bondad, de tu inteligencia
+                        y del corazón tan increíble que tienes.
+                        Eres mi inspiración.
+                    </p>
+                </div>
+
+                <div class="message-card">
+                    <div class="card-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <p>
+                        Siento con cada fibra de mi ser que te mereces el mundo.
+                        Te mereces cada estrella del cielo, cada amanecer hermoso y cada sueño cumplido.
+                        Y aunque el mundo es gigante, quiero que sepas que
+                        no descansaré hasta construir para ti una vida donde te sientas
+                        plena, segura y valorada como la reina que eres.
+                        Mi misión es dártelo todo.
+                    </p>
+                </div>
+
+                <div class="message-card">
+                    <div class="card-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <p>
+                        Te mereces la felicidad más pura y genuina que exista.
+                        No solo momentos felices, sino una vida de felicidad.
+                        Esa sensación que te abraza el corazón y te llena de paz,
+                        esa calidez que te hace sonreír solo por estar viva.
+                        Y si puedo ser el arquitecto de esa felicidad,
+                        lo seré con cada acción de mi vida.
+                    </p>
+                </div>
+
+                <div class="message-card highlight">
+                    <div class="card-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <p>
+                        Te quiero. Te quiero hoy, con una profundidad que sigue creciendo.
+                        Y te querré siempre. Mi amor por ti no es una promesa,
+                        es el aire que respiro.
+                        Siempre te querré.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Botón para ir al poema -->
+            <div class="poem-button-container">
+                <a href="#poema" class="poem-button">
+                    <span class="button-text">Escribir un Poema Para Ti</span>
+                    <i class="fas fa-feather-alt"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del Poema -->
+    <section id="poema" class="poem-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Un Poema Para Ti</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Mis sentimientos en palabras eternas</p>
+            </div>
+
+            <div class="poem-container">
+                <div class="poem-editor">
+                    <div class="editor-header">
+                        <i class="fas fa-pen-fancy"></i>
+                        <h3>Escribe tu corazón aquí</h3>
+                    </div>
+                    <textarea id="poem-textarea" placeholder="En este espacio sagrado, deja fluir tus sentimientos más profundos...
+
+Como las estrellas que adornan el cielo nocturno,
+así iluminas cada rincón de mi existencia.
+Eres la melodía que mi corazón siempre anheló,
+la poesía que da sentido a mi vida..."></textarea>
+                    <div class="editor-footer">
+                        <button id="save-poem-btn" class="action-button">
+                            <i class="fas fa-save"></i> Guardar Poema
+                        </button>
+                        <button id="clear-poem-btn" class="action-button secondary">
+                            <i class="fas fa-eraser"></i> Limpiar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="poem-preview">
+                    <div class="preview-header">
+                        <i class="fas fa-eye"></i>
+                        <h3>Vista previa</h3>
+                    </div>
+                    <div id="poem-preview-content" class="preview-content">
+                        <p class="empty-message">Tu poema aparecerá aquí...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="saved-poems">
+                <h3 class="saved-title">
+                    <i class="fas fa-book-heart"></i> Poemas Guardados
+                </h3>
+                <div id="saved-poems-list" class="poems-list">
+                    <p class="empty-message">Aún no hay poemas guardados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Hecho con <i class="fas fa-heart"></i> para el amor de mi vida</p>
+            <p class="footer-date">Siempre y para siempre</p>
+        </div>
+    </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>
