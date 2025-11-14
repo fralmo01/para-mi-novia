@@ -1,102 +1,176 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Mi Amor ❤️</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Grilla con Fila Completa</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* 1. Estilos para el contenedor padre */
+        .contenedor-principal {
+            display: flex;
+            flex-wrap: wrap;
+            border: 2px solid #000;
+        }
+
+        /* 2. Estilo general para CADA apartado */
+        .apartado {
+            flex-basis: calc(100% / 2);
+            /* Base de 50% para todos */
+            flex-grow: 1;
+            flex-shrink: 1;
+            padding: 20px;
+            border: 1px solid #888;
+        }
+
+        /* 3. ¡REGLA NUEVA! Para el apartado de la imagen */
+        /* Esta regla anula la base de 50% y la pone al 100% */
+        .apartado-imagen {
+            flex-basis: 100%;
+            /* ¡CAMBIO AQUÍ! */
+            padding: 5px;
+            /* Menos padding para una imagen */
+        }
+
+        /* 4. ¡REGLA NUEVA! Para hacer responsivas las imágenes */
+        .apartado img {
+            width: 100%;
+            /* Ocupa todo el ancho de su caja */
+            height: auto;
+            /* Mantiene la proporción */
+            display: block;
+            /* Elimina espacios extra debajo de la imagen */
+
+            /* (Opcional) Si quieres que todas las imágenes 
+               tengan la misma altura y se recorten:
+            height: 250px;
+            object-fit: cover; 
+            */
+        }
+
+
+        /* (Opcional) Damos colores de fondo a cada apartado */
+        .apartado-1 {
+            background-color: #e0f7fa;
+        }
+
+        .apartado-2 {
+            background-color: #c8e6c9;
+        }
+
+        .apartado-3 {
+            background-color: #fff9c4;
+        }
+
+        .apartado-4 {
+            background-color: #ffcdd2;
+        }
+
+        .apartado-5 {
+            background-color: #d1c4e9;
+        }
+
+        .apartado-6 {
+            background-color: #ffe0b2;
+            padding: 5px;
+        }
+
+        .apartado-imagen {
+            background-color: #333;
+        }
+    </style>
 </head>
+
 <body>
-    <!-- Corazón animado de fondo -->
-    <div class="background-heart">
-        <svg viewBox="0 0 32 29.6">
-            <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-            c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-        </svg>
+
+    <div class="contenedor-principal">
+
+        <div class="apartado apartado-1">
+            <p>
+                Honey, I want you to see this little something <br>
+                I made for you.
+            </p>
+        </div>
+
+        <div class="apartado apartado-2">
+            <p>
+                Te amo. En ti encontré todo lo que siempre soñé. <br>
+                Eres la esperanza que me mueve, el amor que me <br>
+                define y el sueño que vivo cada día. Soy el hombre que soy gracias a ti, <br>
+                y mi felicidad... mi felicidad, eres tú.
+            </p>
+        </div>
+
+        <div class="apartado apartado-imagen">
+            <img src="https://images.unsplash.com/photo-1513279922550-250c2129b13a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Imagen horizontal de ejemplo">
+        </div>
+
+        <div class="apartado apartado-3">
+            <p>calendario</p>
+        </div>
+
+        <div class="apartado apartado-4">
+            <p>reproductor de musica)</p>
+        </div>
+
+        <div class="apartado apartado-5">
+            <h1>IMPORTANTE (No lo olvides :3)</h1>
+
+            <p>
+                Amorcito, quiero que nunca, ni por un segundo, dudes de cuánto te quiero.
+                Pero no es solo un "te quiero" simple. Es un "te quiero" que ha redefinido mi mundo.
+                Llegaste a mi vida y le diste un propósito, un color y una calidez
+                que yo no sabía que me faltaba.
+            </p>
+
+            <p>
+                Estoy inmensamente orgulloso de ti.
+                Veo cada día cómo te esfuerzas, cómo enfrentas cada desafío
+                con una fortaleza que me deja sin palabras.
+                Estoy orgulloso de tus logros, claro, pero estoy aún más orgulloso
+                de la persona que eres, de tu bondad, de tu inteligencia
+                y del corazón tan increíble que tienes.
+                Eres mi inspiración.
+            </p>
+
+            <p>
+                Siento con cada fibra de mi ser que te mereces el mundo.
+                Te mereces cada estrella del cielo, cada amanecer hermoso y cada sueño cumplido.
+                Y aunque el mundo es gigante, quiero que sepas que
+                no descansaré hasta construir para ti una vida donde te sientas
+                plena, segura y valorada como la reina que eres.
+                Mi misión es dártelo todo.
+            </p>
+
+            <p>
+                Te mereces la felicidad más pura y genuina que exista.
+                No solo momentos felices, sino una vida de felicidad.
+                Esa sensación que te abraza el corazón y te llena de paz,
+                esa calidez que te hace sonreír solo por estar viva.
+                Y si puedo ser el arquitecto de esa felicidad,
+                lo seré con cada acción de mi vida.
+            </p>
+
+            <p>
+                Te quiero. Te quiero hoy, con una profundidad que sigue creciendo.
+                Y te querré siempre. Mi amor por ti no es una promesa,
+                es el aire que respiro.
+                Siempre te querré.
+            </p>
+        </div>
+
+        <div class="apartado apartado-6">
+            <img src="img/novia.jpg" alt="Foto de mi novia">
+        </div>
+
     </div>
-    <!-- Contenedor principal con efecto cristal -->
-    <div class="glass-container">
-        <!-- Sección inicial: Contador -->
-        <div id="initial-section" class="section active">
-            <h1 class="main-title">Nuestro Tiempo Juntos</h1>
-            <div class="counter-container">
-                <div class="counter-item">
-                    <span class="counter-number" id="days">0</span>
-                    <span class="counter-label">Días</span>
-                </div>
-                <div class="counter-item">
-                    <span class="counter-number" id="hours">0</span>
-                    <span class="counter-label">Horas</span>
-                </div>
-                <div class="counter-item">
-                    <span class="counter-number" id="minutes">0</span>
-                    <span class="counter-label">Minutos</span>
-                </div>
-                <div class="counter-item">
-                    <span class="counter-number" id="seconds">0</span>
-                    <span class="counter-label">Segundos</span>
-                </div>
-            </div>
-            <button class="main-button" id="unlock-btn">
-                ¿Sabes por qué me gustas?
-            </button>
-        </div>
-        <!-- Modal de contraseña -->
-        <div id="password-modal" class="modal">
-            <div class="modal-content glass-effect">
-                <h2>Contraseña Secreta</h2>
-                <p>Solo tú conoces la respuesta... ❤️</p>
-                <input type="password" id="password-input" placeholder="Ingresa la contraseña">
-                <div class="modal-buttons">
-                    <button id="submit-password" class="submit-btn">Desbloquear</button>
-                    <button id="cancel-password" class="cancel-btn">Cancelar</button>
-                </div>
-                <p id="error-message" class="error-message"></p>
-            </div>
-        </div>
-        <!-- Sección desbloqueada: Contenido -->
-        <div id="unlocked-section" class="section">
-            <div class="content-wrapper">
-                <!-- Foto -->
-                <div class="photo-container">
-                    <div class="photo-frame">
-                        <img id="main-photo" src="" alt="Nuestra Foto" />
-                        <div class="photo-overlay"></div>
-                    </div>
-                </div>
-                <!-- Textos (para que tú los escribas) -->
-                <div class="text-content">
-                    <h2 class="content-title">Por Qué Me Gustas</h2>
-                    <div class="text-block">
-                        <p class="main-text">
-                            <!-- AQUÍ ESCRIBE TU PRIMER TEXTO -->
-                            Escribe aquí tu primer mensaje romántico...
-                        </p>
-                    </div>
-                    <div class="text-block">
-                        <p class="main-text">
-                            <!-- AQUÍ ESCRIBE TU SEGUNDO TEXTO -->
-                            Escribe aquí tu segundo mensaje...
-                        </p>
-                    </div>
-                    <div class="text-block">
-                        <p class="main-text">
-                            <!-- AQUÍ ESCRIBE TU TERCER TEXTO -->
-                            Escribe aquí tu tercer mensaje...
-                        </p>
-                    </div>
-                </div>
-                <!-- Corazón formado por palabras -->
-                <div class="word-heart-container">
-                    <h2 class="content-title">Lo Que Significas Para Mí</h2>
-                    <div class="word-heart">
-                        <!-- Las palabras se generarán con JavaScript -->
-                    </div>
-                </div>
-                <button class="back-button" id="back-btn">Volver al Inicio</button>
-            </div>
-        </div>
-    </div>
-    <script src="js/script.js"></script>
+
 </body>
+
 </html>
